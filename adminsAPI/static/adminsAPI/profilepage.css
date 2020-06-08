@@ -1,0 +1,51 @@
+/* Add some padding inside the card container */
+*::-webkit-scrollbar {width:0;}
+html { overflow-x: hidden; }
+.container {
+  padding: 2px 16px;
+}
+
+.bar {
+  position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
+  top: 0;
+  left: 83.5%;
+  height: 100%;
+}
+
+.home img {
+  height: 15vh;
+  margin-top: 1vh;
+  border-radius: 10px;
+}
+
+a:hover {
+	color: #000;
+}
+
+.autor img {
+  height: 5vh;
+  margin-top: 1vh;
+  border-radius: 50%;
+}
+
+.autor {
+  margin-bottom: 0px;
+}
+
+.svg-icon {
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #4691f6;
+}
+
+.svg-icon circle {
+  stroke: #fff;
+  stroke-width: 1;
+}

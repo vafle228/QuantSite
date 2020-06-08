@@ -1,0 +1,32 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Изменить Достижение</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+	<link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body style="background-image: url({% static 'img/bg.png' %}); display: flex; justify-content: space-between;">
+	<div class="p-x-1 p-y-3 main col-2" style="margin: 250px 0 0 5vh; width: 600px;">
+	 <form class="card card-block m-x-auto bg-faded form-width form" method="POST" enctype="multipart/form-data">
+	 	<legend class="m-b-1 text-xs-center">Изменить Достижение</legend>
+	 	{% csrf_token %}
+	 	{{ form|crispy }}
+	 	<div class="text-xs-center">
+            <button class="btn btn-block btn-primary regbtn" type="submit">Изменить</button>
+	 		<div class="btn-group" style="float: left; margin-top: 20px">
+                <a href="{% url 'achievement_delete' achievements.id %}" type="button" class="btn my-2 my-sm-0 ml-2 signbtn btn-danger">Удалить</a>
+            </div>
+            <div class="btn-group" style="float: right; margin-top: 20px">
+                <a type="button" class="btn my-2 my-sm-0 ml-2 signbtn btn-success" href="/main/">На главную</a>
+            </div>
+	 	</div>
+	 </form>
+	</div>
+    <img src="{% static 'img/science.svg' %}" style="height: 100vh; float: right;">
+</body>
+</html>

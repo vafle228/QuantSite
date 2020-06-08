@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/teachers.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <title>Педагогический состав</title>
+</head>
+<body style="background: url({% static 'quants/same_elements/bg.png' %})">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="teachers-container-title">
+        Педагогический состав
+    </div>
+    <div class="teachers-container">
+        <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+                <div class="teachers-point">
+            <div class="teacher-point-img" style="background: url({% static 'img/profile-image.png' %}); background-size: cover;"></div>
+            <div class="Name">Акакий Акакиевич</div>
+            <div class="line4"></div>
+            <div class="tel">
+                <img src="{% static 'img/miscellaneous.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>8(800)-555-35-35</div>
+            </div>
+            <div class="mail">
+                <img src="{% static 'img/multimedia.svg' %}" style="width: 2vw; margin-right: 1vw;"/>
+                <div>mail@mail.ru</div>
+            </div>
+            <div class="line5"></div>
+        </div>
+    </div>
+</body>
+</html>

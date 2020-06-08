@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}</title>
+    <link rel="stylesheet" href="{% static 'adminsAPI/profilepage.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'main/achievements/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'adminsAPI/profilepage.css' %}">
+    <link rel="stylesheet" href="{% static 'main/achievements/achievements.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <style>
+        .container img {
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+        }
+
+        .container img:hover {
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+
+    </style>
+</head>
+<body style="background-image: url({% static 'img/bg.png' %});">
+<main role="main">
+    <div class="row" style="margin-top: 3vh; margin-left: 15vh;">
+        <div class="col-md-10 blog-main">
+            <div class="container" style="margin-top: 1vh">
+                <h1 class="h3 text-center" style="font-size: 6vh; color: white;">Достижения</h1>
+                <div class="grid">
+                    {% for achievement in all_achievements %}
+                    {% if user == achievement.autor %}
+                    <div class="grid-item">
+                        <a href="{% url 'update_achievement' achievement.id %}">
+                            <img class="img-responsive" src="{{ achievement.achievement_img.url }}" alt="">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <nav class="col-md-2 sidebar bar" style="background-color: #343a40;">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <center>
+                                <div class="home" style="background-color: #343a40; color: white;">
+                                    <img src="{{ user.admins.img.url }}" class="mt-2 mb-2">
+                                    <div class="container">
+                                        <h4><b>{{ user.username }}</b></h4>
+                                    </div>
+                                </div>
+                            </center>
+                        <li class="nav-item">
+                            <hr style="border: solid white 2px; width: 100%;">
+                        </li>
+                        </li>
+                        <li class="nav-item mb-2 ml-3">
+                            <a class="nav-link active" href="/main/" style="color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Главная страница <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2 ml-3">
+                            <a class="nav-link" href="user/change" style="color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-users">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                Изменить профиль
+                            </a>
+                        </li>
+
+                        <li class="nav-ittem mb-2 ml-3">
+                            <a class="nav-link" style="color: white;" href="/main/admins/profile/news">
+                                <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9"
+                                     stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+                                    <path d="M6.176,7.241V6.78c0-0.221-0.181-0.402-0.402-0.402c-0.221,0-0.403,0.181-0.403,0.402v0.461C4.79,7.416,4.365,7.955,4.365,8.591c0,0.636,0.424,1.175,1.006,1.35v3.278c0,0.222,0.182,0.402,0.403,0.402c0.222,0,0.402-0.181,0.402-0.402V9.941c0.582-0.175,1.006-0.714,1.006-1.35C7.183,7.955,6.758,7.416,6.176,7.241 M5.774,9.195c-0.332,0-0.604-0.272-0.604-0.604c0-0.332,0.272-0.604,0.604-0.604c0.332,0,0.604,0.272,0.604,0.604C6.377,8.923,6.105,9.195,5.774,9.195 M10.402,10.058V6.78c0-0.221-0.181-0.402-0.402-0.402c-0.222,0-0.402,0.181-0.402,0.402v3.278c-0.582,0.175-1.006,0.714-1.006,1.35c0,0.637,0.424,1.175,1.006,1.351v0.461c0,0.222,0.181,0.402,0.402,0.402c0.221,0,0.402-0.181,0.402-0.402v-0.461c0.582-0.176,1.006-0.714,1.006-1.351C11.408,10.772,10.984,10.233,10.402,10.058M10,12.013c-0.333,0-0.604-0.272-0.604-0.604S9.667,10.805,10,10.805c0.332,0,0.604,0.271,0.604,0.604S10.332,12.013,10,12.013M14.629,8.448V6.78c0-0.221-0.182-0.402-0.403-0.402c-0.221,0-0.402,0.181-0.402,0.402v1.668c-0.581,0.175-1.006,0.714-1.006,1.35c0,0.636,0.425,1.176,1.006,1.351v2.07c0,0.222,0.182,0.402,0.402,0.402c0.222,0,0.403-0.181,0.403-0.402v-2.07c0.581-0.175,1.006-0.715,1.006-1.351C15.635,9.163,15.21,8.624,14.629,8.448 M14.226,10.402c-0.331,0-0.604-0.272-0.604-0.604c0-0.332,0.272-0.604,0.604-0.604c0.332,0,0.604,0.272,0.604,0.604C14.83,10.13,14.558,10.402,14.226,10.402 M17.647,3.962H2.353c-0.221,0-0.402,0.181-0.402,0.402v11.27c0,0.222,0.181,0.402,0.402,0.402h15.295c0.222,0,0.402-0.181,0.402-0.402V4.365C18.05,4.144,17.869,3.962,17.647,3.962 M17.245,15.232H2.755V4.768h14.49V15.232z"></path>
+                                </svg>
+                                Показать новости
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2 ml-3">
+                            <a class="nav-link profileMenu" href="/main/admins/achievement/create"
+                               style="color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-file">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                Создать достижение
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2 ml-3">
+                            <a class="nav-link" href="/main/exit" style="color: white;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-layers">
+                                    <path d="M10.185,1.417c-4.741,0-8.583,3.842-8.583,8.583c0,4.74,3.842,8.582,8.583,8.582S18.768,14.74,18.768,10C18.768,5.259,14.926,1.417,10.185,1.417 M10.185,17.68c-4.235,0-7.679-3.445-7.679-7.68c0-4.235,3.444-7.679,7.679-7.679S17.864,5.765,17.864,10C17.864,14.234,14.42,17.68,10.185,17.68 M10.824,10l2.842-2.844c0.178-0.176,0.178-0.46,0-0.637c-0.177-0.178-0.461-0.178-0.637,0l-2.844,2.841L7.341,6.52c-0.176-0.178-0.46-0.178-0.637,0c-0.178,0.176-0.178,0.461,0,0.637L9.546,10l-2.841,2.844c-0.178,0.176-0.178,0.461,0,0.637c0.178,0.178,0.459,0.178,0.637,0l2.844-2.841l2.844,2.841c0.178,0.178,0.459,0.178,0.637,0c0.178-0.176,0.178-0.461,0-0.637L10.824,10z"></path>
+                                </svg>
+                                Выйти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <script src="{% static 'main/achievements/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'main/achievements/bootstrap.min.js' %}"></script>
+        <script src="{% static 'main/achievements/jquery.fancybox.min.js' %}"></script>
+        <script src="{% static 'main/achievements/gridify.js' %}"></script>
+        <script>
+        $(function () {
+            var options =
+                {
+                    srcNode: 'img',             // grid items (class, node)
+                    margin: '30px',             // margin in pixel, default: 0px
+                    width: '300px',             // grid item width in pixel, default: 220px
+                    max_width: '',              // dynamic gird item width if specified, (pixel)
+                    resizable: true,            // re-layout if window resize
+                    transition: 'all 0.5s ease' // support transition for CSS3, default: all 0.5s ease
+                };
+            $('.grid').gridify(options);
+        });
+
+        </script>
+</main>
+</body>
+</html>

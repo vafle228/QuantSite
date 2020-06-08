@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+</head>
+<body style="background: url({% static 'img/bg.png' %}); font-family: 'Montserrat', sans-serif; display: flex; justify-content: space-between;">
+    <div style="margin: 0px 0 0 5vh; width: 800px;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container" style="margin: 40vh 30vh 0 0; width: 50%">
+                <div class="card">
+                    <div class="card-body" style="padding-top: 5px; padding-bottom: 30px; margin: 2vh">
+                        {% if object.title %}
+                        <h3>Вы действительно хотите удалить: "{{ object.title }}"</h3>
+                        {% else %}
+                        <h3>Вы действительно хотите удалить: Достижение?</h3>
+                        {% endif %}
+                        <div class="text-xs-center mt-4">
+                            <div class="btn-group" style="float: left">
+                                <button type="submit" class="btn btn-success backbtn" href="">Да</button>
+                            </div>
+                            <div class="btn-group" style="float: right;">
+                                <a type="button" class="btn signbtn btn-danger" href="/main/">Нет</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <img src="{% static 'img/science.svg' %}" style="height: 100vh; float: right;">
+</body>
+</html>

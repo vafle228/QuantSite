@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ news.title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+	<link rel="stylesheet" href="{% static 'main/detail.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+</head>
+<body style="background: url({% static 'img/bg.png' %}); background-size: cover;">
+    <div class="container">
+      <div class="card border-0 shadow mt-5" style="margin: 2rem 0 2rem 0 !important;">
+        <div class="card-body p-5">
+          <h1 class="font-weight-strong" style="color: black; font-size: 4vh">{{ news.title }}</h1>
+            <img src="{{ news.news_img.url }}" alt="Project's img" class="bd-placeholder-img card-img-top" width="100%" height="600" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#3e4245;"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#efeeec;"></text></img>
+            <hr style="border: solid 2px black; width: 90%" />
+            <p class="lead mt-2" style="font-size: 2vh">{{ news.description }}</p>
+            <div class="d-flex ">
+              <p class="lead mt-2">Автор проекта: </p>
+              <div class="autor ml-1">
+                <img src="{{ news.autor.admins.img.url }}" style="height: 60px; border-radius: 50%">
+              </div>
+              <p class="lead mt-2 ml-1">{{ news.autor }}</p>
+            </div>
+          <p class="lead mt-2">Тип новости: #{{ news.tag }}</p>
+          <p class="lead mt-2">Дата публикации: {{ news.date }}</p>
+          <div class="btn-group">
+            <a href="/main" type="button" class="btn btn-lg btn-outline-secondary mr-2 mt-2">На главную</a>
+            {% if user == news.autor %}
+              <a href="{% url 'update_news' news.id %}" type="button" class="btn btn-lg btn-outline-secondary mr-2 mt-2">Редактировать</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Достижения</title>
+    <link href="{% static 'main/achievements/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/achievements/achievements.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <style>
+        .container img {
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+        }
+
+        .container img:hover {
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+    </style>
+</head>
+<body style="background: url({% static 'img/bg.png' %}); background-size: cover;">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container" style="margin-top: 13vh">
+        <div class="center">
+            <h1 class="h3 text-center" style="font-size: 6vh; color: white; height: 10vh">Достижения</h1>
+            {% if is_paginated %}
+            <div class="pagination" style="width: 90%; bottom: 78vh">
+                <nav class="pagination-container">
+                    <button style="width: 8vh"><a href="?page=1" class="log-link">Первая</a></button>
+                    {% if page_obj.has_previous %}
+                    <button><a href="?page={{ page_obj.previous_page_number }}" class="log-link">{{ page_obj.previous_page_number }}</a></button>
+                    {% endif %}
+                    <button style="background: linear-gradient(to top left, #F80000, #000)"><a class="log-link">{{ page_obj.number }}</a></button>
+                    {% if page_obj.has_next %}
+                    <button><a href="?page={{ page_obj.next_page_number }}" class="log-link">{{ page_obj.next_page_number }}</a></button>
+                    {% endif %}
+                    <button style="width: 10vh"><a href="?page={{ page_obj.paginator.num_pages }}" class="log-link">Последняя</a></button>
+                </nav>
+            </div>
+            {% endif %}
+        </div>
+        <div class="grid">
+            {% for achievement in all_achievements %}
+            <div class="grid-item">
+                <a data-fancybox="gallery" href="{{ achievement.achievement_img.url }}">
+                    <img class="img-responsive" src="{{ achievement.achievement_img.url }}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'main/achievements/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'main/achievements/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/achievements/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'main/achievements/gridify.js' %}"></script>
+    <script src="{% static 'main/achievement.js' %}"></script>
+    <script>
+        $(function () {
+            var options =
+                {
+                    srcNode: 'img',             // grid items (class, node)
+                    margin: '30px',             // margin in pixel, default: 0px
+                    width: '440px',             // grid item width in pixel, default: 220px
+                    max_width: '',              // dynamic gird item width if specified, (pixel)
+                    resizable: true,            // re-layout if window resize
+                    transition: 'all 0.5s ease' // support transition for CSS3, default: all 0.5s ease
+                };
+            $('.grid').gridify(options);
+        });
+    </script>
+</body>
+</html>

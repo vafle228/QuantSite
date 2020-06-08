@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script src="{% static 'main/scripts.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <title>Кванториум</title>
+</head>
+<body onload="showSlides(slideIndex = 1)">
+<div class="slideshow-container">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="intro-container">
+        <h1 class="intro-title">Детский технопарк "Кванториум"</h1>
+        <h2 class="intro-subtitle">Детский технопарк "Кванториум" - это новая форма дополнительного
+            образования, которая реализует научно-технический интерес детей.
+            Это место интеллектуальной смелости и <br/> комфортных условий для
+            формирования изобритательского мышления</h2>
+        <button class="intro-button">Записаться</button>
+    </div>
+    <img src="{% static 'img/bg1.png' %}" class="intro-bg mySlides fade">
+    <img src="{% static 'img/bg2.jpeg' %}" class="intro-bg mySlides fade">
+    <img src="{% static 'img/bg3.jpeg' %}" class="intro-bg mySlides fade">
+    <div class="dot-bar">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+</div>
+<div class="part-info">
+    <div class="what-is" style="background: url({% static 'img/bg4.png' %});">
+        <div class="what-is-container">
+            <div class="text-block">
+                <h1 class="what-is-title">Что такое Кванториум</h1>
+                <h2 class="what-is-subtitle">«Кванториумы» – это федеральная сеть детских технопарков.
+                    Отличаются уникальным<br/> технологическим оборудованием и
+                    современным подходом к обучению. Здесь <br/>школьники
+                    сотрудничают с настоящими учеными и бизнесменами и
+                    выполняют <br/>реальные производственные задачи.</h2>
+                <h2 class="what-is-subtitle">Детский технопарк «Кванториум» — это уникальная среда
+                    для ускоренного развития<br/> ребенка по актуальным научно-
+                    исследовательским и инженерно-техническим <br/>направлениям,
+                    оснащенная высокотехнологичным оборудованием.</h2>
+            </div>
+            <img src="{% static 'img/quant%20work.png' %}" class="what-is-img">
+        </div>
+        <div class="points-bar" style="background: url({% static 'img/quant.png' %}) no-repeat;">
+            <div class="points-bar-container">
+                <h1 class="point">большое<br/> множество направлений</h1>
+                <div class="line"></div>
+                <h1 class="point">создание<br/> масштабных проектов</h1>
+                <div class="line"></div>
+                <h1 class="point">разработка<br/> инновационных технологий</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="directions" style="background: url({% static 'img/bg4.png' %}); background-size: cover;">
+    <h1 class="directions-part-title">Направления</h1>
+    <div class="directions-container">
+        <div class="direction">
+            <a href="/main/quants/it">
+                <div class="line3" style="background-color: #0090FF"></div>
+                <img src="{% static 'img/logo_Itkvantum.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">It-Квантум</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Информационные технологии для решения прикладных и
+                изобретательских задач, а также освоение перспективных
+                направлений: интернет вещей, машинное обучение и др.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/hi-tech">
+                <div class="line3" style="background-color: #FFA200"></div>
+                <img src="{% static 'img/logo_HiTech%20(1).png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Hi-Tech</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Инженерия, изобретательство, CAD/CAM системы,
+                лазерные технологии, аддитивные технологии, станки с ЧПУ, электронные
+                компоненты.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/robo">
+                <div class="line3" style="background-color: #212C95"></div>
+                <img src="{% static 'img/logo_Robokvantum.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Робоквантум</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Изучение передовых технологий в области мехатроники
+                и электроники, конструирование и программирование роботов.</h2>
+        </div>
+    </div>
+    <div class="directions-container">
+        <div class="direction">
+            <a href="/main/quants/vr-ar">
+                <div class="line3" style="background-color: #5F85A1"></div>
+                <img src="{% static 'img/лого-VR_AR.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">VR-AR</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Какой-то текст, я еще не придумал,
+                но пусть это сделает другой.Какой-то текст, я еще не придумал,
+                но пусть это сделает другой.Какой-то текст, я еще не придумал,
+                но пусть это сделает другой.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/design">
+                <div class="line3" style="background-color: #3FC7DD"></div>
+                <img src="{% static 'img/PromDesign.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Промдизайн-Квантум</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Какой-то текст, я ещё не придумал,
+                но пусть это сделает кто-то другой. какой-то текст, я ещё не
+                придумал, но пусть это сделает кто-то другой. какой-то текст,
+                я ещё не придумал, но пусть это сделает кто-то другой.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/energy">
+                <div class="line3" style="background-color: #F79E50"></div>
+                <img src="{% static 'img/logo_Enerdjikvantum.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Энерджиквантум</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Знакомство с основами традиционной и
+                альтернативной энергетики. Приобретение знаний по кинематической
+                физике, физике химических источников тока, освоение основ
+                электротехники.</h2>
+        </div>
+    </div>
+    <div class="directions-container">
+        <div class="direction">
+            <a href="/main/quants/chess">
+                <div class="line3" style="background-color: #964B00"></div>
+                <img src="{% static 'img/chessLogo.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Шахматы</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Занятия по шахматам помогут овладеть основными правилами и понятиями игры в шахматы, познакомят с историей возникновения и развития этой игры, а также с передовыми компьютерными шахматными программами.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/english">
+                <div class="line3" style="background-color: #FF0000"></div>
+                <img src="{% static 'img/englishLogo.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Английский</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Знание иностранного языка расширяет границы и открывает техническому творчеству новые возможности, позволяя читать литературу на языке источника и уверенно чувствовать себя на международных соревнованиях.</h2>
+        </div>
+        <div class="direction">
+            <a href="/main/quants/math">
+                <div class="line3" style="background-color: #00AC4B"></div>
+                <img src="{% static 'img/mathLogo.png' %}" class="logo-kvantum"></a>
+            <h1 class="direction-title">Математика</h1>
+            <div class="line2"></div>
+            <h2 class="direction-subtitle">Научно-технический прогресс не стоит на месте: новые роботы заменяют людей на производствах, но одно остается неизменным. Чтобы достичь высоких результатов в инженерной области, необходимо знание математики.</h2>
+        </div>
+    </div>
+</div>
+<div class="achievements">
+    <div class="achievements-container">
+        <div class="achievements-container-text">
+            <h1 class="achievements-container-title">Наши достижения</h1>
+            <h2 class="achievements-container-subtitle">Кванториум всегда проявлял инициативу участия<br/> 
+                во многих соревнованиях. Также кванториум проводит различные открытые <br/>
+                мастер-классы и уроки. Участие в различных конкурсах доступно каждому ученику Кванториума!</h2>
+            <a class="achievements-button log-link" href="/main/achievements/">Ознакомиться</a>
+        </div>
+        <img src="{% static 'img/achievement.png' %}" class="achievements-image"/>
+    </div>
+</div>
+<div class="news">
+    <h1 class="news-container-title">Новости</h1>
+    <div class="news-container">
+        <div class="news-point">
+            <img src="{{ first_news.news_img.url }}" class="news-img">
+            <div class="news-title-container">
+                <h1 class="news-title">{{ first_news.title }}</h1>
+                <img src="{{ first_news.autor.admins.img.url }}" class="profile-img"/>
+            </div>
+            <div class="line4"></div>
+            <h2 class="news-subtitle">{{ first_news.short_description }}</h2>
+            <a href="{% url 'news_detail' first_news.id %}" class="news-button log-link"><h1>Подробнее</h1></a>
+            <div class="line5">
+                <div class="line5-container">
+                    <h3 class="line5-container-text">{{ first_news.date }}</h3>
+                    <h3 class="line5-container-text">#{{ first_news.tag }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="news-point">
+            <img src="{{ second_news.news_img.url }}" class="news-img">
+            <div class="news-title-container">
+                <h1 class="news-title">{{ second_news.title }}</h1>
+                <img src="{{ second_news.autor.admins.img.url }}" class="profile-img"/>
+            </div>
+            <div class="line4"></div>
+            <h2 class="news-subtitle">{{ second_news.short_description }}</h2>
+            <a class="news-button log-link" href="{% url 'news_detail' second_news.id %}"><h1>Подробнее</h1></a>
+            <div class="line5">
+                <div class="line5-container">
+                    <h3 class="line5-container-text">{{ second_news.date }}</h3>
+                    <h3 class="line5-container-text">#{{ second_news.tag }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="news-point">
+            <img src="{{ third_news.news_img.url }}" class="news-img">
+            <div class="news-title-container">
+                <h1 class="news-title">{{ third_news.title }}</h1>
+                <img src="{{ third_news.autor.admins.img.url }}" class="profile-img"/>
+            </div>
+            <div class="line4"></div>
+            <h2 class="news-subtitle">{{ third_news.short_description }}</h2>
+            <a class="news-button log-link" href="{% url 'news_detail' third_news.id %}"><h1>Подробнее</h1></a>
+            <div class="line5">
+                <div class="line5-container">
+                    <h3 class="line5-container-text">{{ third_news.date }}</h3>
+                    <h3 class="line5-container-text">#{{ third_news.tag }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="more-news log-link" href="/main/news/">Смотреть все</a>
+</div>
+<div class="footer">
+    <h1 class="footer-text">Made by great Qant-team</h1>
+</div>
+</body>
+</html>

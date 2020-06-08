@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+*::-webkit-scrollbar {width:0px;}
+header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, #080808, #3F3F3F);
+    z-index: 1000;
+}
+.header__inner {
+    font-size: 2.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    width: 90%;
+    margin-left: 5%;
+}
+.header-nav {
+    margin-right: 30px;
+    overflow: hidden;
+}
+.log {
+    color: #fff;
+}
+.header-nav a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 2.5vh;
+    text-decoration: none;
+}
+a.log-link:active,
+a.log-link:hover,
+a.log-link {
+  text-decoration: none;
+  color: white;
+}
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+.dropbtn {
+    border: none;
+    background: unset;
+    outline: none;
+    font-size: 2.5vh;
+    color: #fff;
+    padding: 2.5vh;
+    height: 100%;
+    margin: 0;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background: linear-gradient(to bottom, #3F3F3F, #080808);
+}
+.dropdown-content a {
+    float: none;
+    padding: 1vh 0.5vw;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover {
+	filter: brightness(70%);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*---------------------Педагогический состав---------------------*/
+.teachers-container-title {
+    position: absolute;
+    top: 15vh;
+    width: 100%;
+    text-align: center;
+    font-size: 6vh;
+    color: #fff;
+}
+.teachers-container {
+    position: absolute;
+    top: 30vh;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.teachers-point {
+    width: 25%;
+    height: 50vh;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 3.3vw 15vh 3.3vw;
+}
+.teacher-point-img {
+    width: 70%;
+    margin-top: 2vh;
+    height: 25vh;
+    margin-left: 15%;
+    border-radius: 50%;
+}
+.line4 {
+    width: 80%;
+    margin-left: 10%;
+    height: 3px;
+    background-color: #E8E8E8;
+    margin-bottom: 2vh;
+}
+.Name {
+    font-size: 3vh;
+    width: 100%;
+    text-align: center;
+}
+.tel {
+    font-size: 3vh;
+    margin-left: 1vw;
+    padding: 1vh 0 1vh 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.mail {
+    font-size: 3vh;
+    margin-left: 1vw;
+    padding: 1vh 0 1vh 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.line5 {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 3vh;
+    background: linear-gradient(to top left, #810D14, #F80000);
+    border-radius: 0 0 7px 7px;
+    margin-top: 3.5vh;
+}

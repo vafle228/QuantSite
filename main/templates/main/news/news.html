@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+    <link rel="stylesheet" href="{% static 'main/news.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+</head>
+<body style="background: url({% static 'img/bg.png' %}); background-size: cover;">
+     <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="news">
+        <h1 class="news-container-title">Новости</h1>
+        <div class="news-container">
+        {% for news in all_news %}
+            <div class="news-point">
+                <img src="{{ news.news_img.url }}" class="news-img">
+                <div class="news-title-container">
+                    <h1 class="news-title">{{ news.title }}</h1>
+                    <img src="{{ news.autor.admins.img.url }}" class="profile-img"/>
+                </div>
+                <div class="line4"></div>
+                <h2 class="news-subtitle">{{ news.short_description }}</h2>
+                <a href="{% url 'news_detail' news.id %}" class="news-button log-link"><h1>Подробнее</h1></a>
+                <div class="line5">
+                    <div class="line5-container">
+                        <h3 class="line5-container-text">{{ news.date }}</h3>
+                        <h3 class="line5-container-text">#{{ news.tag }}</h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% if is_paginated %}
+        <div class="pagination">
+            <nav class="pagination-container">
+                <button style="width: 8vh"><a href="?page=1" class="log-link">Первая</a></button>
+                {% if page_obj.has_previous %}
+                <button><a href="?page={{ page_obj.previous_page_number }}" class="log-link">{{ page_obj.previous_page_number }}</a></button>
+                {% endif %}
+                <button style="background: linear-gradient(to top left, #F80000, #000)"><a>{{ page_obj.number }}</a></button>
+                {% if page_obj.has_next %}
+                <button><a href="?page={{ page_obj.next_page_number }}" class="log-link">{{ page_obj.next_page_number }}</a></button>
+                {% endif %}
+                <button style="width: 10vh"><a href="?page={{ page_obj.paginator.num_pages }}" class="log-link">Последняя</a></button>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

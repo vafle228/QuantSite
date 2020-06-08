@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quants/IT/style.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <title>IT-квантум</title>
+</head>
+<body style="background: url({% static 'quants/same_elements/bg.png' %});">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="mid" style="background: url({% static 'quants/IT/it_darkness.png' %}) no-repeat; background-size: cover;">
+        <div class="mid-container">
+            <img src="{% static 'quants/IT/logo_Itkvantum.png' %}" width="120" class="logo-kvantum">
+            <h1 class="title">IT-квантум</h1>
+            <h2 class="subtitle">Информационные технологии для решения прикладных и изобретательских задач, а также освоение перспективных направлений: интернет вещей, машинное обучение и др.</h2>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-container">
+            <h1>О квантуме</h1>
+            <h3>Информационные технологии призваны, основываясь и рационально используя современные достижения в
+            области компьютерной техники и иных высоких технологий, новейших средств коммуникации, программного
+            обеспечения и практического опыта, решать задачи <br/> по эффективной организации информационного
+            процесса.
+            </h3>
+        </div>
+        <div class="bottom-container2">
+            <div class="points">
+                <h1>216</h1>
+                <h2>Учебных часа в<br/>программе</h2>
+            </div>
+            <div class="points">
+                <h1>10+</h1>
+                <h2>Возрастная<br/>категория</h2>
+            </div>
+            <div class="points">
+                <h1>12</h1>
+                <h2>Человек<br/>в одной группе</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

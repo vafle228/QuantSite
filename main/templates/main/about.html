@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/about.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <title>Сведения об организации</title>
+</head>
+<body style="background: url({% static 'quants/same_elements/bg.png' %})">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link log" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link log" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="info-container-title">
+        Сведения об организации
+    </div>
+    <div class="info-text">
+        «Кванториум» – это среда ускоренного развития инженерных, исследовательских <br/>навыков и изобретательского мышления детей на основе проектной, командной<br/> деятельности под руководством компетентных наставников и при деятельном <br/>участии родителей.<br/>
+        <br/>
+        Детские технопарки «Кванториум» – это площадки, оснащенные <br/>высокотехнологичным оборудованием, нацеленные на подготовку новых <br/>высококвалифицированных инженерных кадров, разработку, тестирование и <br/>внедрение инновационных технологий и идей.<br/>
+        <br/>
+        Задачи:<br/>
+        - создать систему научно-технического просвещения через привлечение детей и <br/>молодёжи к изучению и практическому применению наукоёмких технологий.<br/>
+        - выстроить социальный лифт для молодежи, проявившей значительные таланты в<br/> научно-техническом творчестве.<br/>
+        - обеспечить подготовку национально-ориентированного кадрового резерва для <br/>наукоемких и высокотехнологичных отраслей экономики.<br/>
+        - разработать и внедрить новый российский формат дополнительного образования <br/>детей в сфере инженерных наук.<br/>
+        - обеспечить системное выявление и дальнейшее сопровождение одаренных в<br/> инженерных науках детей.<br/>
+        <br/>
+        <br/>
+        Кванториум Свердловской детской железной дороги включает 6 направлений: IT,<br/> VR/AR, Промышленный дизайн, Хайтек, Промробо, Энерджи.<br/>
+        <br/>
+        Занятия начнутся:<br/>
+        - с 16 сентября для детей с 11 до 17 лет,<br/>
+        - с 09 сентября для детей с 7 до 10 лет.<br/>
+        <br/>
+        Занятия в 2019/2020 учебном году будут проходить 3 раза в неделю по 2<br/> академических часа - 4 часа специалитета и 2 часа технического английского и <br/>прикладной математики.<br/>
+        <br/>
+        Подробная информация по записи на основную программу обучения технопарка <br/>для детей 11-17 лет по ссылке: https://vk.com/kvantoriumsvdzd?w=wall-165917495_421<br/>
+        <br/>
+        Подробная информация по записи на подготовительную программу обучения <br/>технопарка для детей 7-10 лет по ссылке: <br/>https://vk.com/kvantoriumsvdzd?w=wall-165917495_439<br/>
+        <br/>
+        Телефон для справок: +7 (343) 358-58-79<br/>
+        Электронная почта: kvantoriumsvdzd@yandex.ru<br/>
+    </div>
+</body>
+</html>

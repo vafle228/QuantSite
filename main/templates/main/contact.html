@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/contact.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/svg" />
+    <title>Контакты</title>
+</head>
+<body style="background: url({% static 'img/bg.png' %})">
+    <header>
+        <div class="header__inner">
+            <a href="/main"><img src="{% static 'img/logo-removebg-preview.png' %}" width="102.75"></a>
+            <nav class="header-nav">
+                <a href="/main/achievements/" class="header-nav-link">Достижения</a>
+                <a href="/main/news/" class="header-nav-link">Новости</a>
+                <a href="/main/contact" class="header-nav-link">Контакты</a>
+                <div class="dropdown header-nav-link">
+                    <button class="dropbtn">О нас
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/main/about">Сведения об организации</a>
+                        <a href="/main/teachers">Педагогический состав</a>
+                    </div>
+                </div>
+            </nav>
+            {% if user.is_authenticated %}
+            <div class="log"><a class="log-link log" href="/main/admins/profile/news">Профиль</a></div>
+            {% else %}
+            <div class="log"><a class="log-link log" href="/main/auth">Войти</a></div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="contacts-container-title">
+        Контакты
+    </div>
+    <div class="contacts-container">
+        <div class="contacts-text-block">
+            Адрес: улица Пушкина, дом Каллатушкина<br/>
+
+            Телефон: 8 (800) 555-35-35<br/>
+
+            Мы в социальных сетях:<br/>
+            <a href="https://vk.com/kvantoriumsvdzd"><img src="{% static 'img/logotype.svg' %}"/></div></a>
+            <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d1377.2782066652705!2d60.64582900!3d56.81692600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d56.81692600!2d60.64582900!5e1!3m2!1sru!2sru!4v1583333464726!5m2!1sru!2sru" width="50%" height="400" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+</body>
+</html>
